@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+    <title>AI Video Vietnamese Dubber</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-gray-900 text-gray-100 px-[env(safe-area-inset-left)] px-[env(safe-area-inset-right)]">
+    <div class="max-w-4xl mx-auto p-4 md:p-6">
+        <header class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-blue-400 mb-2">🎬 AI Lồng Tiếng Việt Video</h1>
+            <p class="text-gray-400">Tự động tạo phụ đề & lồng tiếng Việt cho mọi video</p>
+        </header>
+
+        <div class="bg-gray-800 rounded-xl p-5 shadow-xl mb-6">
+            <div class="space-y-5">
+                <!-- Tải file lên -->
+                <div>
+                    <label class="block mb-2 font-medium">Tải video lên (tối đa 100MB)</label>
+                    <input type="file" id="videoFile" accept="video/*" class="w-full p-3 bg-gray-700 rounded-lg file:mr-3 file:py-2 file:px-4 file:bg-blue-600 file:border-0 file:rounded-lg hover:file:bg-blue-700">
+                    <button id="uploadBtn" class="w-full mt-3 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-all">Tải lên & Xử lý</button>
+                </div>
+
+                <div class="flex items-center gap-3 text-gray-500">
+                    <div class="flex-1 h-px bg-gray-600"></div>
+                    <span>HOẶC</span>
+                    <div class="flex-1 h-px bg-gray-600"></div>
+                </div>
+
+                <!-- Nhập link -->
+                <div>
+                    <label class="block mb-2 font-medium">Link YouTube / Google Drive</label>
+                    <input type="url" id="videoUrl" placeholder="https://youtube.com/watch?v=..." class="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:border-blue-500 outline-none">
+                    <button id="processUrlBtn" class="w-full mt-3 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-medium transition-all">Xử lý link</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Khu vực trạng thái -->
+        <div id="statusArea" class="hidden bg-gray-800 rounded-xl p-5 mb-6">
+            <h3 class="font-medium mb-3">Tiến trình xử lý</h3>
+            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden mb-3">
+                <div id="progressBar" class="h-full bg-blue-500 w-0 transition-all duration-300"></div>
+            </div>
+            <p id="statusText" class="text-gray-300">Đang chuẩn bị...</p>
+        </div>
+
+        <!-- Khu vực kết quả -->
+        <div id="resultArea" class="hidden bg-gray-800 rounded-xl p-5">
+            <h3 class="font-medium mb-3 text-green-400">✅ Hoàn thành!</h3>
+            <video id="previewVideo" controls class="w-full rounded-lg mb-4"></video>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a id="downloadVideo" class="flex-1 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-center font-medium">Tải video lồng tiếng</a>
+                <a id="downloadSrt" class="flex-1 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg text-center font-medium">Tải phụ đề SRT</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
